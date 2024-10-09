@@ -1,0 +1,8 @@
+<h1>Estado de la deuda para la Orden {{ orden.id }}</h1>
+
+<p>Producto: {{ orden.producto.nombre }}</p>
+<p>Monto: {{ orden.monto }}</p>
+<p>Descripción: {{ estado_deuda.label }}</p>
+<p>Activa: {{ estado_deuda.isActive|yesno:"Sí,No" }}</p>
+<p>Pagada: {% if estado_deuda.isPaid %}Sí, en fecha {{ estado_deuda.payDate }}{% else %}No{% endif %}</p>
+<p><a href="{{ estado_deuda.payUrl }}">Pagar ahora</a></p>

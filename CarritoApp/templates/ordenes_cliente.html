@@ -1,0 +1,21 @@
+<h1>Mis Órdenes</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Monto</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for orden in ordenes %}
+        <tr>
+            <td>{{ orden.producto.nombre }}</td>
+            <td>{{ orden.fecha }}</td>
+            <td>{{ orden.estado }}</td>
+            <td>{{ orden.monto }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
