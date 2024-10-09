@@ -1,1 +1,1 @@
-web: gunicorn Carrito.wsgi --log-file -
+web: gunicorn carrito.wsgi --log-file -
