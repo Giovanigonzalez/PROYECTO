@@ -20,8 +20,8 @@ class Producto(models.Model):
         return txt
 
 class Orden(models.Model):
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)  # Relación con Cliente
-    productos = models.ManyToManyField(Producto)  # Relación muchos a muchos con Producto
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)  
+    productos = models.ManyToManyField(Producto)  
     fecha = models.DateTimeField(auto_now_add=True)
     estado = models.CharField(max_length=10, choices=[('pendiente', 'Pendiente'), ('pagado', 'Pagado')], default='pendiente')
     monto = models.DecimalField(max_digits=10, decimal_places=2)

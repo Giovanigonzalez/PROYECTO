@@ -1,0 +1,1 @@
+web: gunicorn carrito.wsgi --log-file -
