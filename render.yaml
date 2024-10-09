@@ -1,0 +1,11 @@
+version: 1
+services:
+  - type: web
+    name: carrito-service  # Nombre del servicio
+    env: python
+    buildCommand: pip install -r requirements.txt
+    runCommand: gunicorn carrito.wsgi  # Asegúrate de usar el nombre correcto de tu módulo WSGI
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.9"
