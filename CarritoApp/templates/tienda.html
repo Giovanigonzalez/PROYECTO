@@ -8,16 +8,21 @@
     <title>Bienvenido a la Tienda</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Styles
+    <!-- Styles -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    -->
-
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12 align-self-center"><h1 class="display-1">TIENDA</h1></div>
+            <div class="col-12 align-self-center">
+                <h1 class="display-1">TIENDA</h1>
+                <!-- Enlace a Mis Órdenes -->
+                <div class="text-right">
+                    <a href="{% url 'ver_ordenes_cliente' %}" class="btn btn-outline-info">Mis Órdenes</a>
+                </div>
+            </div>
         </div>
+        
         <div class="row">
             <div class="col-8">
                 <div class="row" style="padding: 5px 0;">
@@ -26,10 +31,10 @@
                             {% for producto in productos %}
                             <div class="col-6">
                                 <div class="card" style="height: 10rem; width: 23rem; margin: 5px 0px;">
-                                    <div class="card-body ">
-                                        <h5 class="card-title">{{producto.nombre}}</h5>
-                                        <p class="card-text">{{producto.categoria}}</p>
-                                        <p class="card-text">{{producto.precio}}</p>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                                        <p class="card-text">{{ producto.categoria }}</p>
+                                        <p class="card-text">{{ producto.precio }}</p>
                                         <a href="{% url 'Add' producto.id %}" class="btn btn-outline-primary">Agregar al carrito</a>
                                     </div>
                                 </div>

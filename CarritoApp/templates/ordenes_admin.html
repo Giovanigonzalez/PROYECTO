@@ -1,23 +1,41 @@
-<h1>Todas las Órdenes</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Cliente</th>
-            <th>Producto</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Monto</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for orden in ordenes %}
-        <tr>
-            <td>{{ orden.cliente.username }}</td>
-            <td>{{ orden.producto.nombre }}</td>
-            <td>{{ orden.fecha }}</td>
-            <td>{{ orden.estado }}</td>
-            <td>{{ orden.monto }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Órdenes Administrativas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Órdenes Administrativas</h2>
+        {% if ordenes %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID de Orden</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Monto</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for orden in ordenes %}
+                    <tr>
+                        <td>{{ orden.id }}</td>
+                        <td>{{ orden.cliente.nombre }}</td>
+                        <td>{{ orden.estado }}</td>
+                        <td>${{ orden.monto }}</td>
+                        <td>{{ orden.fecha }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay órdenes disponibles.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

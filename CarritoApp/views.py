@@ -124,8 +124,15 @@ def crear_orden(request, producto_id):
         return redirect('error_de_pago')  
 
 def ver_ordenes_cliente(request):
-    ordenes = Orden.objects.filter(cliente=request.user)
-    return render(request, 'ordenes_cliente.html', {'ordenes': ordenes})
+    if request.user.is_authenticated:
+        cliente = get_object_or_404(Cliente, user=request.user)
+        
+        ordenes = Orden.objects.filter(cliente=cliente)
+        
+        return render(request, 'ordenes_cliente.html', {'ordenes': ordenes})
+    else:
+        
+        return redirect('login')
 
 def ver_ordenes_admin(request):
     ordenes = Orden.objects.all()  

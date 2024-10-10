@@ -1,21 +1,48 @@
-<h1>Mis Órdenes</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Monto</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for orden in ordenes %}
-        <tr>
-            <td>{{ orden.producto.nombre }}</td>
-            <td>{{ orden.fecha }}</td>
-            <td>{{ orden.estado }}</td>
-            <td>{{ orden.monto }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<h2>Mis Órdenes</h2>
+
+{% if ordenes %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID de Orden</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Monto</th>
+                <th>Productos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for orden in ordenes %}
+            <tr class="table-primary">  <!-- Clase para diferenciar cada orden -->
+                <td>{{ orden.id }}</td>
+                <td>{{ orden.fecha }}</td>
+                <td>{{ orden.estado }}</td>
+                <td>${{ orden.monto }}</td>
+                <td>
+                    <table class="table table-sm table-striped table-bordered mb-0">  <!-- Bordes en la tabla de productos -->
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for producto in orden.productos.all %}
+                                <tr>
+                                    <td>{{ producto.nombre }}</td>
+                                    <td>${{ producto.precio }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No has realizado ninguna compra aún.</p>
+{% endif %}
+
+
+
