@@ -1,7 +1,0 @@
-<form method="POST" action="{% url 'procesar_pago' orden.id %}">
-    {% csrf_token %}
-    <h2>Resumen de Pago</h2>
-    <p>Orden ID: {{ orden.id }}</p>
-    <p>Monto: ${{ orden.monto }}</p>
-    <button type="submit">Pagar</button>
-</form>
