@@ -10,5 +10,5 @@ services:
       - key: PYTHON_VERSION
         value: "3.11.1"  # Especifica la versión de Python
       - key: PYTHONPATH         # Agrega la variable PYTHONPATH
-        value: "/opt/render/project/src"  # Establece el PYTHONPATH a la raíz del proyecto
+        value: "/opt/render/project/src/Carrito"  # Establece el PYTHONPATH a la raíz del proyecto
 
