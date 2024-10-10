@@ -1,0 +1,7 @@
+<form method="POST">
+    {% csrf_token %}
+    <h2>Resumen de Pago</h2>
+    <p>ID de Orden: {{ orden.id }}</p>
+    <p>Monto: ${{ orden.monto }}</p>
+    <button type="submit" class="btn btn-success">Confirmar Pago</button>
+</form>
