@@ -1,0 +1,14 @@
+version: 1
+services:
+  - type: web
+    name: carrito-service  
+    env: python
+    buildCommand: pip install -r requirements.txt
+    runCommand: gunicorn Carrito.wsgi  
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.1"  # Especifica la versión de Python
+      - key: PYTHONPATH         # Agrega la variable PYTHONPATH
+        value: "/opt/render/project/src"  # Establece el PYTHONPATH a la raíz del proyecto
+
