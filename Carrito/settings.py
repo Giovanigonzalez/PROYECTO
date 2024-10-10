@@ -13,7 +13,11 @@ SECRET_KEY = 'django-insecure-vte(k+h&1^puj=5-g%vgrsscmzf&-vy&$yhe7ikyxwg2%^*x#t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'proyecto-htzy.onrender.com',  # Dominio de Render
+    'localhost',                   
+    '127.0.0.1',
+    ]
 
 
 # Application definition
