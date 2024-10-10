@@ -140,24 +140,24 @@ def ver_ordenes_admin(request):
 
 def procesar_pago(request, orden_id):
     orden = get_object_or_404(Orden, id=orden_id)
+
     if request.method == 'POST':
-    
         response = requests.post('https://api.adamspay.com/payment', data={
             'amount': orden.monto,
             'order_id': orden.id,
-            
         })
-        
+
         if response.status_code == 200:
-            
             orden.estado = 'pagado'
             orden.save()
             return redirect('pago_exitoso')
         else:
-            
-            return redirect('pago_error')
+            # Manejo del error de pago
+            messages.error(request, 'El pago no se pudo procesar. Intenta nuevamente.')  # Mensaje de error
+            return redirect('tienda')  # Redirige a la tienda
 
     return render(request, 'procesar_pago.html', {'orden': orden})
+
 
 def leer_deuda_adamspay(orden):
     apiKey = "ap-2823a2205aaa3e84df18dd40"
